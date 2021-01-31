@@ -91,6 +91,25 @@ class RNNTransducer(nn.Module):
             dropout_p=decoder_dropout_p,
         )
 
+    def set_encoder(self, encoder):
+        """ Setter for encoder """
+        self.encoder = encoder
+
+    def set_decoder(self, decoder):
+        """ Setter for decoder """
+        self.decoder = decoder
+
+    def count_parameters(self) -> int:
+        """ Count parameters of encoder """
+        num_encoder_parameters = self.encoder.count_parameters()
+        num_decoder_parameters = self.decoder.count_parameters()
+        return num_encoder_parameters + num_decoder_parameters
+
+    def update_dropout(self, dropout_p) -> None:
+        """ Update dropout probability of model """
+        self.encoder.update_dropout(dropout_p)
+        self.decoder.update_dropout(dropout_p)
+        
     def joint(self, encoder_outputs: Tensor, decoder_outputs: Tensor) -> Tensor:
         """
         Joint `encoder_outputs` and `decoder_outputs`.
