@@ -80,6 +80,16 @@ class DecoderRNNT(nn.Module):
         )
         self.out_proj = nn.Linear(hidden_state_dim, output_dim)
 
+    def count_parameters(self) -> int:
+        """ Count parameters of encoder """
+        return sum([p.numel for p in self.parameters()])
+
+    def update_dropout(self, dropout_p: float) -> None:
+        """ Update dropout probability of encoder """
+        for name, child in self.named_children():
+            if isinstance(child, nn.Dropout):
+                child.p = dropout_p
+        
     def forward(
             self,
             inputs: Tensor,
