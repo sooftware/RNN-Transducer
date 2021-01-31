@@ -100,7 +100,7 @@ class RNNTransducer(nn.Module):
         self.decoder = decoder
 
     def count_parameters(self) -> int:
-        """ Count parameters of encoder """
+        """ Count parameters of model """
         num_encoder_parameters = self.encoder.count_parameters()
         num_decoder_parameters = self.decoder.count_parameters()
         return num_encoder_parameters + num_decoder_parameters
@@ -191,7 +191,7 @@ class RNNTransducer(nn.Module):
         return torch.LongTensor(pred_tokens)
 
     @torch.no_grad()
-    def recognize(self, inputs: Tensor, input_lengths: Tensor):
+    def recognize(self, inputs: Tensor, input_lengths: Tensor) -> Tensor:
         """
         Recognize input speech. This method consists of the forward of the encoder and the decode() of the decoder.
 
