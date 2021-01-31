@@ -18,7 +18,8 @@
           <img src="http://img.shields.io/badge/build-passing-success"> 
      </a>
     
-  RNN-Transducer are a form of sequence-to-sequence models that do not employ attention mechanisms. Unlike most sequence-to-sequence models, which typically need to process the entire input sequence (the waveform in our case) to produce an output (the sentence), the RNN-T continuously processes input samples and streams output symbols, a property that is welcome for speech dictation.   
+  RNN-Transducer are a form of sequence-to-sequence models that do not employ attention mechanisms. Unlike most sequence-to-sequence models, which typically need to process the entire input sequence (the waveform in our case) to produce an output (the sentence), the RNN-T continuously processes input samples and streams output symbols, a property that is welcome for speech dictation.    
+This repository contains only model code, but you can train with conformer with [this repository](https://github.com/sooftware/kospeech).
     
 ![img](https://www.researchgate.net/publication/335044103/figure/fig3/AS:789632253952000@1565274408664/Recurrent-neural-network-RNN-transducer-structure-38.png)
   
