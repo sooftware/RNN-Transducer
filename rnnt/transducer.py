@@ -90,6 +90,7 @@ class RNNTransducer(nn.Module):
             eos_id=eos_id,
             dropout_p=decoder_dropout_p,
         )
+        self.fc = Linear(decoder_hidden_state_dim, num_classes, bias=False)
 
     def set_encoder(self, encoder):
         """ Setter for encoder """
